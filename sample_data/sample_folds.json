@@ -1,0 +1,61 @@
+{
+  "metadata": {
+    "dataset": "sample_dataset.parquet",
+    "split_type": "book_level_groupkfold",
+    "n_splits": 2,
+    "total_samples": 10,
+    "total_books": 4,
+    "filename_column": "image_path",
+    "class_column": "printshop"
+  },
+  "folds": [
+    {
+      "fold": 0,
+      "train_indices": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "val_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "stats": {
+        "train_samples": 4,
+        "val_samples": 6,
+        "train_books": 2,
+        "val_books": 2,
+        "train_val_book_overlap": 0
+      }
+    },
+    {
+      "fold": 1,
+      "train_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "val_indices": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "stats": {
+        "train_samples": 6,
+        "val_samples": 4,
+        "train_books": 2,
+        "val_books": 2,
+        "train_val_book_overlap": 0
+      }
+    }
+  ]
+}

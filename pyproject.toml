@@ -1,0 +1,56 @@
+[project]
+name = "visual-feature-discovery"
+version = "1.0.0"
+description = "Interpretable visual feature discovery using Attention-based Multiple Instance Learning (AttriMIL), ConvNeXtV2, and Swin Transformer baselines"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+
+dependencies = [
+    "torch>=2.5.1",
+    "torchvision",
+    "pytorch-lightning",
+    "tensorboard",
+    "pillow",
+    "numpy<2.0",
+    "tqdm",
+    "matplotlib",
+    "scikit-learn",
+    "albumentations",
+    "opencv-python",
+    "timm",
+    "transformers",
+    "einops",
+    "umap-learn>=0.5.7",
+    "numba>=0.60.0",
+    "llvmlite>=0.43.0",
+    "rich",
+    "requests",
+    "pandas>=2.0.3",
+    "pyarrow>=16.1.0",
+    "grad-cam>=1.5.4",
+    "seaborn>=0.13.2",
+    "pyfonts>=1.1.1",
+    "hdbscan>=0.8.40",
+]
+
+[project.optional-dependencies]
+comet = [
+    "comet_ml",
+]
+rapids = [
+    "dask==2024.7.1",
+    "cuml-cu12==24.8.0",
+]
+dev = [
+    "ruff",
+    "ipython>=8.37.0",
+    "jupyterlab>=4.4.7",
+]
+
+[tool.uv]
+prerelease = "allow"
+index-strategy = "unsafe-best-match"
+
+[[tool.uv.index]]
+url = "https://pypi.nvidia.com"

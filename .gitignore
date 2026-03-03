@@ -1,0 +1,69 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# PyTorch / ML
+lightning_logs/
+checkpoints/
+*.ckpt
+*.pth
+*.pt
+
+# Data & features
+*.parquet
+!sample_data/*.parquet
+*.arrow
+features_*/
+data/
+
+# Experiment tracking
+comet_logs/
+comet_models/
+model_cache/
+wandb/
+
+# Results (generated)
+results/
+ensemble_results*/
+
+# SLURM
+*.out
+slurm-*.out
+
+# Secrets
+constants.json
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Cache
+.cache/
+.claude/
