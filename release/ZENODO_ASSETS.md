@@ -36,7 +36,7 @@ The page images referenced by `dataset_metadata.parquet` are not part of this re
 
 | File | Size | SHA-256 |
 |---|---:|---|
-| `code-v1.0.0.tar.gz` | 13 MB | `29fa67442f5d24b2ca53e3e4dac1a1568175cdf99e2932b74a1b66c1761dac22` |
+| `code-v1.0.0.tar.gz` | 13 MB | `b4ad3c43307df0d187798589527e992459f77af5cca6f5b522aff990a220ce8b` |
 
 The archive contains the source tree of `aronvandepol/visual-feature-discovery` at the v1.0.0 release.
 Built with `tar` from the working tree at the tagged commit, with virtualenvs, caches, results, and gitignored heavy artifacts excluded.

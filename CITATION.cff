@@ -19,6 +19,7 @@ authors:
     affiliation: "Leiden University"
     orcid: "https://orcid.org/0000-0001-5448-3712"
 repository-code: "https://github.com/aronvandepol/visual-feature-discovery"
+doi: "10.5281/zenodo.20015055"
 license: "MIT"
 keywords:
   - "multiple instance learning"

@@ -77,8 +77,12 @@ The page images themselves remain governed by the Hyundam Mun'go catalog terms.
 
 ## Citation
 
+Cite this Zenodo record using the **concept DOI**, which always resolves to the latest version:
+
+`10.5281/zenodo.20015055`
+
+The current pre-publication version is v1.0.0 (`10.5281/zenodo.20015056`).
 The article and Zenodo record will receive their final citation block on acceptance.
-For now, please cite this record using the Zenodo concept DOI assigned to this deposit.
 
 ## Contact
 

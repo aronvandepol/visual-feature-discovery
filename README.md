@@ -5,7 +5,7 @@
 >
 > The full reproducibility bundle (trained model weights, interpretability artifacts, and dataset metadata) will be deposited on Zenodo upon publication.
 > The Zenodo concept DOI of that deposit will be the canonical citable identifier in the paper.
-> Zenodo concept DOI: `10.5281/zenodo.XXXXXXX` *(to be filled in when the deposit is finalized).*
+> Zenodo concept DOI: [`10.5281/zenodo.20015055`](https://doi.org/10.5281/zenodo.20015055)
 
 Code for "Interpretable Visual Feature Discovery using Multiple Instance Learning: A Case Study of Colonial Korean Print" (van de Pol, Prokic, and Mol, forthcoming in *Computational Humanities Research*, Cambridge University Press).
 
@@ -386,7 +386,7 @@ The clustering uses fixed UMAP and HDBSCAN parameters that are documented in `fe
 
 ### Pretrained checkpoints
 
-Trained checkpoints for AttriMIL 8x8, AttriMIL 16x16, ConvNeXt full-page (held-out-book and page-random), and Swin S3 cutout (held-out-book and page-random) — five folds per configuration — will be deposited on the Zenodo record `10.5281/zenodo.XXXXXXX` upon publication.
+Trained checkpoints for AttriMIL 8x8, AttriMIL 16x16, ConvNeXt full-page (held-out-book and page-random), and Swin S3 cutout (held-out-book and page-random) — five folds per configuration — will be deposited on the Zenodo record [`10.5281/zenodo.20015055`](https://doi.org/10.5281/zenodo.20015055) as a new version once the article is in print.
 The deposit will also include the precomputed 8x8 patch embeddings and HDBSCAN cluster assignments used for the interpretability analysis.
 A download helper will live at `scripts/release/download_weights.py` once the DOI is finalized.
 
@@ -420,4 +420,4 @@ Interpretable Visual Feature Discovery using Multiple Instance Learning: A Case 
 Computational Humanities Research, X(X). Cambridge University Press.
 ```
 
-The Zenodo concept DOI (`10.5281/zenodo.XXXXXXX`, to be filled in) is the citable identifier for the software and accompanying data artifacts.
+The Zenodo concept DOI [`10.5281/zenodo.20015055`](https://doi.org/10.5281/zenodo.20015055) is the citable identifier for the software and accompanying data artifacts.
