@@ -2,10 +2,8 @@
 
 import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
-import torch
 import numpy as np
 import os
-import matplotlib.cm as cm
 import warnings
 
 # Suppress matplotlib font warnings
@@ -108,7 +106,7 @@ def visualize_attention(page_patches, patch_attention, prediction, true_label, c
     attention_heatmap = attention_heatmap / np.max(attention_heatmap)
 
     # Apply colormap to the attention heatmap
-    cmap = cm.get_cmap('jet')
+    cmap = plt.get_cmap('jet')
     attention_colormap = cmap(attention_heatmap)[:, :, :3]  # Ignore alpha channel
 
     # Blend the attention colormap with the reconstructed image

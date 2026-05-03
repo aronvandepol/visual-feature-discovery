@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 from sklearn.model_selection import StratifiedKFold
 import os
 import json
@@ -153,8 +152,6 @@ def prepare_kfold_splits(parquet_path, n_splits=5, output_dir='kfold_splits'):
 
 def visualize_fold_distribution(book_df, fold_info, output_dir):
     """Create visualizations of the printshop distribution across folds"""
-    import matplotlib.pyplot as plt
-    import seaborn as sns
 
     # Set up the figure
     plt.figure(figsize=(15, 10))

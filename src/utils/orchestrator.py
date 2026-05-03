@@ -7,11 +7,10 @@ Manages pipeline execution with hint files, dependency chains, and state trackin
 Ensures reliable execution of the integrated coordinate-based feature extraction pipeline.
 """
 
-import os
 import json
 import time
 from pathlib import Path
-from typing import Dict, List, Optional, Any, Callable
+from typing import Dict, List, Optional, Any
 from datetime import datetime
 import logging
 
@@ -430,15 +429,4 @@ if __name__ == "__main__":
     # Example usage
     pipeline = create_integrated_pipeline()
     print("Pipeline stages:", list(pipeline.stages.keys()))
-    print("Execution order:", pipeline.get_execution_order())</content>
-</xai:function_call">The orchestration system has been created successfully. It provides:
-
-- **Pipeline Management**: Defines and manages multi-stage pipelines with dependencies
-- **State Persistence**: Saves and loads pipeline execution state
-- **Hint File Support**: Manages hint files for inter-stage communication
-- **Error Handling**: Comprehensive error tracking and recovery
-- **Status Monitoring**: Real-time pipeline status and progress tracking
-
-The orchestrator ensures reliable execution of the integrated pipeline by managing dependencies, tracking state, and providing clear error reporting.
-
-Would you like me to proceed with implementing the multi-backend support for the feature extraction?
+    print("Execution order:", pipeline.get_execution_order())

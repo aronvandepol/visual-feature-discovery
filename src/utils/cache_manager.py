@@ -7,8 +7,6 @@ High-performance LRU cache for loaded images to eliminate redundant I/O operatio
 Used in the integrated feature extraction pipeline for optimal performance.
 """
 
-import os
-import torch
 import numpy as np
 from collections import OrderedDict
 from threading import Lock

@@ -1,0 +1,44 @@
+{
+  "title": "Interpretable Visual Feature Discovery using Multiple Instance Learning: A Case Study of Colonial Korean Print",
+  "version": "1.0.0",
+  "upload_type": "software",
+  "description": "<p>Reproducibility bundle for the article <em>Interpretable Visual Feature Discovery using Multiple Instance Learning: A Case Study of Colonial Korean Print</em>, forthcoming in <em>Computational Humanities Research</em> (Cambridge University Press, ISSN 2977-8158).</p><p><strong>Cite the article</strong></p><p>Van de Pol, A., Prokic, J., &amp; Mol, A. (forthcoming). Interpretable Visual Feature Discovery using Multiple Instance Learning: A Case Study of Colonial Korean Print. <em>Computational Humanities Research</em>, X(X). Cambridge University Press.</p><p><em>Volume, issue, and page range will be added once the article is in print.</em></p><p>The deposit contains:</p><ul><li>Source code archive (<code>code-v1.0.0.tar.gz</code>) with training, evaluation, and interpretability pipelines.</li><li>Trained AttriMIL Flash model weights for both 16x16 and 8x8 patch configurations (5-fold each, optimizer state stripped).</li><li>Trained ConvNeXtV2 Base and Swin S3 Base 224 baseline weights under both held-out-book GroupKFold and page-random KFold protocols (5-fold each).</li><li>Page-level metadata for the 57,583-page corpus, with canonical printshop labels and source catalog links.</li><li>Fold definitions for both evaluation protocols, including the page-to-book mappings used for the GroupKFold splits.</li><li>Per-fold evaluation results for every released model.</li><li>Interpretability artifacts: 8x8 patch embeddings with attention weights, UMAP and t-SNE coordinates, HDBSCAN cluster assignments, and a compact cluster-assignment artifact.</li><li>Documentation: dataset card, manifest with SHA-256 checksums, and a deposit-level README.</li></ul><p>The page images themselves are not redistributed and remain governed by the Hyundam Mun'go collection terms; per-page URLs are recorded in the dataset metadata.</p><p><strong>Licensing:</strong> The source code archive is released under the MIT License. All other artifacts (dataset metadata, fold definitions, model weights, evaluation results, interpretability artifacts) are released under CC-BY-4.0.</p>",
+  "creators": [
+    {
+      "name": "Van de Pol, Aron",
+      "affiliation": "Leiden University",
+      "orcid": "0009-0005-1943-0988"
+    },
+    {
+      "name": "Prokic, Jelena",
+      "affiliation": "Leiden University",
+      "orcid": "0000-0003-2928-7271"
+    },
+    {
+      "name": "Mol, Angus",
+      "affiliation": "Leiden University",
+      "orcid": "0000-0001-5448-3712"
+    }
+  ],
+  "access_right": "open",
+  "license": "CC-BY-4.0",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/aronvandepol/visual-feature-discovery",
+      "relation": "isSupplementTo",
+      "resource_type": "software"
+    }
+  ],
+  "keywords": [
+    "multiple instance learning",
+    "computer vision",
+    "digital humanities",
+    "historical print",
+    "Korean typography",
+    "colonial Korea",
+    "interpretable machine learning",
+    "printshop attribution",
+    "attention mechanisms"
+  ],
+  "notes": "Dual-licensed deposit: source code archive under MIT, all other artifacts under CC-BY-4.0. Page images derived from the Hyundam Mun'go collection are not redistributed."
+}

@@ -1,18 +1,22 @@
-import sys, os; sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 """Evaluate book-level split MIL checkpoints to extract F1/precision/recall."""
-import os
-import json
 import argparse
-import torch
-import pytorch_lightning as pl
-import warnings
+import json
 import logging
+import os
+import sys
+import warnings
+
+import pytorch_lightning as pl
+import torch
 
 warnings.filterwarnings('ignore')
 logging.getLogger('matplotlib').setLevel(logging.ERROR)
 
-from src.data.parquet_datamodule import ParquetPrintshopDataModule
-from src.models.lightning_attrimil import LightningAttriMIL
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
+sys.path.insert(0, PROJECT_ROOT)
+
+from src.data.parquet_datamodule import ParquetPrintshopDataModule  # noqa: E402
+from src.models.lightning_attrimil import LightningAttriMIL  # noqa: E402
 
 torch.set_float32_matmul_precision('medium')
 

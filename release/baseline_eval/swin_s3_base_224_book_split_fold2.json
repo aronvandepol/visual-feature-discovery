@@ -1,0 +1,26 @@
+{
+  "model_name": "swin_s3_base_224",
+  "fold": 2,
+  "n_folds": 5,
+  "split_info": {
+    "fold": 2,
+    "train_samples": 44957,
+    "val_samples": 8063,
+    "test_samples": 13254,
+    "train_books": 347,
+    "val_books": 61,
+    "test_books": 102,
+    "train_val_overlap": 0,
+    "train_test_overlap": 0,
+    "val_test_overlap": 0
+  },
+  "test_results": {
+    "test_loss_epoch": 0.6173461079597473,
+    "test_accuracy": 0.8437641263008118,
+    "test_precision": 0.8503076434135437,
+    "test_recall": 0.856689989566803,
+    "test_f1": 0.8508388996124268
+  },
+  "model_path": "models_book_split/swin_s3_base_224_fold2_20260203_1749.pth",
+  "checkpoint_dir": "checkpoints_book_split/swin_s3_base_224_fold2_20260203_1749"
+}

@@ -10,10 +10,9 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
-from typing import Dict, Iterable, Iterator, List, Mapping, Optional
+from typing import Dict, List, Mapping, Optional
 
 import numpy as np
-import pandas as pd
 import torch
 
 from feature_extraction.config import (

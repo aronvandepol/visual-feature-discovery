@@ -9,7 +9,7 @@ import os
 import shutil
 import tempfile
 from pathlib import Path
-from typing import Any, Dict, Iterable, Optional, Tuple
+from typing import Any, Dict, Iterable, Optional
 
 import torch
 
@@ -21,7 +21,6 @@ except ImportError:
 from feature_extraction.config import (
     COMET_WORKSPACE,
     MODEL_CACHE_DIR,
-    MODEL_DOWNLOAD_TIMEOUT,
     PRINTSHOP_CANONICAL_MAP,
     USE_COMET_MODELS,
 )
@@ -164,7 +163,6 @@ def find_and_load_model_from_comet(api, project_name, experiment_name, fold, num
     Returns:
         tuple: (loaded_model, experiment_metadata, temp_dir)
     """
-    import requests
 
     print(f"Loading model for {experiment_name}_fold{fold} from Comet ML...")
     print(f"Searching for experiments in project: {project_name}")

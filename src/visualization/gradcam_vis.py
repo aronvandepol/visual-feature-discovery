@@ -2,8 +2,6 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
-import matplotlib.cm as cm
-import os
 
 _font = None
 
@@ -121,7 +119,7 @@ def visualize_attention(page_patches, patch_attention, prediction, true_label, c
         attention_heatmap = attention_heatmap / attention_max
 
     # Apply colormap to the attention heatmap
-    cmap = cm.get_cmap('jet')
+    cmap = plt.get_cmap('jet')
     attention_colormap = cmap(attention_heatmap)[:, :, :3]
 
     # Create a more transparent blend for better visibility

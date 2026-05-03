@@ -326,7 +326,7 @@ def main():
         print(f"{'='*60}")
         split = get_original_split(args.data_dir)
 
-    print(f"\nSplit Statistics:")
+    print("\nSplit Statistics:")
     print(f"  Train samples: {split['train_samples']}")
     print(f"  Test samples: {split['test_samples']}")
     print(f"  Train books: {split['train_books']}")
@@ -362,12 +362,12 @@ def main():
     # Evaluate
     metrics = evaluate_model(model, test_loader, device)
 
-    print(f"\nResults:")
+    print("\nResults:")
     print(f"  Accuracy: {metrics['accuracy']*100:.2f}%")
     print(f"  F1 Score: {metrics['f1']:.4f}")
     print(f"  Precision: {metrics['precision']:.4f}")
     print(f"  Recall: {metrics['recall']:.4f}")
-    print(f"\nConfusion Matrix:")
+    print("\nConfusion Matrix:")
     print(metrics['confusion_matrix'])
 
     # Log to Comet (if available)

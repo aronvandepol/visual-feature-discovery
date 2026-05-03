@@ -34,9 +34,11 @@ checkpoints/
 # Data & features
 *.parquet
 !sample_data/*.parquet
+!release/*.parquet
+release/zenodo/
 *.arrow
 features_*/
-data/
+/data/
 
 # Experiment tracking
 comet_logs/

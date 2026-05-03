@@ -1,15 +1,28 @@
-import sys, os; sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 # train_mil.py
-import os
-import json
 import argparse
-import torch
-import pytorch_lightning as pl
-import matplotlib.pyplot as plt
-import matplotlib.font_manager as fm
-import warnings
 import logging
+import os
+import sys
+import warnings
+from datetime import datetime
+
+import matplotlib.font_manager as fm
+import matplotlib.pyplot as plt
 import pandas as pd
+import pytorch_lightning as pl
+import torch
+from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping
+
+try:
+    from pytorch_lightning.loggers import CometLogger
+except ImportError:
+    CometLogger = None
+
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
+sys.path.insert(0, PROJECT_ROOT)
+
+from src.data.parquet_datamodule import ParquetPrintshopDataModule  # noqa: E402
+from src.models.lightning_attrimil import LightningAttriMIL  # noqa: E402
 
 # Suppress all matplotlib warnings early
 warnings.filterwarnings('ignore', category=UserWarning, module='matplotlib')
@@ -17,10 +30,6 @@ warnings.filterwarnings('ignore', message='Glyph*missing from font*')
 warnings.filterwarnings('ignore', message='Font family*not found')
 logging.getLogger('matplotlib.font_manager').setLevel(logging.ERROR)
 logging.getLogger('matplotlib.category').setLevel(logging.ERROR)
-try:
-    from pytorch_lightning.loggers import CometLogger
-except ImportError:
-    CometLogger = None
 
 # Try to load NotoSansCJK font at module scope; fall back gracefully
 try:
@@ -32,14 +41,6 @@ try:
     plt.rcParams['font.family'] = ['DejaVu Sans', 'Liberation Sans', 'sans-serif']
 except Exception:
     plt.rcParams['font.family'] = ['DejaVu Sans', 'Liberation Sans', 'sans-serif']
-
-from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping
-
-from src.data.parquet_datamodule import ParquetPrintshopDataModule
-from src.models.lightning_attrimil import LightningAttriMIL
-from datetime import datetime
-
-import sys
 
 torch.set_float32_matmul_precision('medium')
 
@@ -172,8 +173,14 @@ def visualize_and_log_patches(data_module, num_samples, logger):
 
 def get_class_names_from_parquet(parquet_file):
     """Read class names from parquet without creating the full dataset."""
+    import unicodedata
     df = pd.read_parquet(parquet_file)
-    # Apply same canonicalization as ParquetPrintshopDataset
+    # Apply same canonicalization as ParquetPrintshopDataset.
+    # Normalize Unicode form first (parquet may store Hangul as NFD, which would silently
+    # fail to match NFC mapping keys).
+    df['printshop'] = df['printshop'].apply(
+        lambda s: unicodedata.normalize('NFC', s) if isinstance(s, str) else s
+    )
     mapping = {
         '대동인쇄 주식회사 大東印刷 株式會社': '대동인쇄소',
         '대동인쇄소 大東印刷所': '대동인쇄소',
@@ -228,7 +235,7 @@ def main(args):
     )
 
     print(f"\n{'='*60}")
-    print(f"Using AttriMIL (optimized attention, split backbone)")
+    print("Using AttriMIL (optimized attention, split backbone)")
     print(f"Patch size: {args.patch_size}, Stride: {args.stride}")
     print(f"Batch size: {args.batch_size}, Num workers: {args.num_workers}")
     print(f"torch.compile backbone: {args.compile_backbone}, GPUs: {args.num_gpus}")

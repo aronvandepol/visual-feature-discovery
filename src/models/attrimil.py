@@ -339,7 +339,6 @@ class AttriMIL(nn.Module):
         """
         Calculate cross-page ranking loss: our shop patches > other shop patches
         """
-        batch_size = patch_scores.shape[0]
         unique_labels = torch.unique(labels)
 
         # Skip if batch has only one type of print shop

@@ -1,27 +1,36 @@
-import sys, os; sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 # train_mil_features.py
 # Training script for feature-based AttriMIL.
 # Same CLI interface as train_mil.py but loads pre-extracted features.
 
-import os
-import json
 import argparse
-import torch
-import pytorch_lightning as pl
-import matplotlib.pyplot as plt
-import matplotlib.font_manager as fm
-import warnings
 import logging
+import os
+import sys
+import warnings
+from datetime import datetime
+
+import matplotlib.font_manager as fm
+import matplotlib.pyplot as plt
+import pytorch_lightning as pl
+import torch
+from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping
+
+try:
+    from pytorch_lightning.loggers import CometLogger
+except ImportError:
+    CometLogger = None
+
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
+sys.path.insert(0, PROJECT_ROOT)
+
+from src.data.feature_datamodule import FeaturePrintshopDataModule  # noqa: E402
+from src.models.lightning_attrimil_features import LightningAttriMILFeatures  # noqa: E402
 
 warnings.filterwarnings('ignore', category=UserWarning, module='matplotlib')
 warnings.filterwarnings('ignore', message='Glyph*missing from font*')
 warnings.filterwarnings('ignore', message='Font family*not found')
 logging.getLogger('matplotlib.font_manager').setLevel(logging.ERROR)
 logging.getLogger('matplotlib.category').setLevel(logging.ERROR)
-try:
-    from pytorch_lightning.loggers import CometLogger
-except ImportError:
-    CometLogger = None
 
 # Try to load NotoSansCJK font at module scope; fall back gracefully
 try:
@@ -33,11 +42,6 @@ try:
     plt.rcParams['font.family'] = ['DejaVu Sans', 'Liberation Sans', 'sans-serif']
 except Exception:
     plt.rcParams['font.family'] = ['DejaVu Sans', 'Liberation Sans', 'sans-serif']
-
-from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping
-from src.data.feature_datamodule import FeaturePrintshopDataModule
-from src.models.lightning_attrimil_features import LightningAttriMILFeatures
-from datetime import datetime
 
 torch.set_float32_matmul_precision('medium')
 
@@ -78,7 +82,7 @@ def main(args):
     )
 
     print(f"\n{'='*60}")
-    print(f"Feature-based AttriMIL Training")
+    print("Feature-based AttriMIL Training")
     print(f"Feature dir: {args.feature_dir}")
     print(f"Feature dim: {args.feature_dim}")
     print(f"Batch size: {args.batch_size}, Num workers: {args.num_workers}")

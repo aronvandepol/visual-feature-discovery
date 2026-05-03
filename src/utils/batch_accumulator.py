@@ -10,7 +10,7 @@ Integrates with the LRU image cache for optimal performance.
 import torch
 import numpy as np
 import pandas as pd
-from typing import Dict, List, Tuple, Optional, Union
+from typing import Dict, List, Tuple, Optional
 from PIL import Image
 import albumentations as A
 from albumentations.pytorch import ToTensorV2

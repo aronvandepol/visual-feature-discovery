@@ -1,0 +1,51 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below. The software is released under the MIT License. Released artifacts in the Zenodo deposit (dataset metadata, fold definitions, trained model weights, interpretability artifacts, evaluation results) are released under CC-BY-4.0; cite the Zenodo record directly for those."
+type: software
+title: "Interpretable Visual Feature Discovery using Multiple Instance Learning: A Case Study of Colonial Korean Print"
+version: "1.0.0"
+date-released: "2026-04-28"
+authors:
+  - family-names: "Van de Pol"
+    given-names: "Aron"
+    email: "a.m.van.de.pol@hum.leidenuniv.nl"
+    affiliation: "Leiden University"
+    orcid: "https://orcid.org/0009-0005-1943-0988"
+  - family-names: "Prokic"
+    given-names: "Jelena"
+    affiliation: "Leiden University"
+    orcid: "https://orcid.org/0000-0003-2928-7271"
+  - family-names: "Mol"
+    given-names: "Angus"
+    affiliation: "Leiden University"
+    orcid: "https://orcid.org/0000-0001-5448-3712"
+repository-code: "https://github.com/aronvandepol/visual-feature-discovery"
+license: "MIT"
+keywords:
+  - "multiple instance learning"
+  - "computer vision"
+  - "digital humanities"
+  - "historical print"
+  - "Korean typography"
+preferred-citation:
+  type: article
+  title: "Interpretable Visual Feature Discovery using Multiple Instance Learning: A Case Study of Colonial Korean Print"
+  authors:
+    - family-names: "van de Pol"
+      given-names: "Aron"
+      email: "a.m.van.de.pol@hum.leidenuniv.nl"
+      affiliation: "Leiden University"
+      orcid: "https://orcid.org/0009-0005-1943-0988"
+    - family-names: "Prokic"
+      given-names: "Jelena"
+      affiliation: "Leiden University"
+      orcid: "https://orcid.org/0000-0003-2928-7271"
+    - family-names: "Mol"
+      given-names: "Angus"
+      affiliation: "Leiden University"
+      orcid: "https://orcid.org/0000-0001-5448-3712"
+  journal: "Computational Humanities Research"
+  publisher:
+    name: "Cambridge University Press"
+  issn: "2977-8158"
+  year: 2026
+  notes: "Volume, issue, page range, and article DOI to be updated upon publication."

@@ -1,0 +1,30 @@
+{
+  "model_name": "convnextv2_base",
+  "fold": 0,
+  "n_folds": 5,
+  "split_info": {
+    "fold": 0,
+    "split_type": "page_level",
+    "train_samples": 45067,
+    "val_samples": 7952,
+    "test_samples": 13255,
+    "train_books": 510,
+    "val_books": 509,
+    "test_books": 509,
+    "total_unique_books": 510,
+    "train_val_book_overlap": 509,
+    "train_test_book_overlap": 509,
+    "val_test_book_overlap": 508,
+    "train_val_overlap_pct": 100.0,
+    "train_test_overlap_pct": 100.0
+  },
+  "test_results": {
+    "test_loss_epoch": 0.06839354336261749,
+    "test_accuracy": 0.9818181991577148,
+    "test_precision": 0.982060432434082,
+    "test_recall": 0.9818368554115295,
+    "test_f1": 0.9819337129592896
+  },
+  "model_path": "models_page_split/convnextv2_base_fold0_20260220_0811.pth",
+  "checkpoint_dir": "checkpoints_page_split/convnextv2_base_fold0_20260220_0811"
+}

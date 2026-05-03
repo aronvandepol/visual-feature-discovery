@@ -6,22 +6,20 @@ Runs on GPU with sample_data/ (10 images, 4 classes, 2 folds).
 Each test prints PASS/FAIL and a summary is printed at the end.
 """
 
-import sys
-import os
-
-# Ensure project root is on path
-PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-sys.path.insert(0, PROJECT_ROOT)
-
-import traceback
-import time
 import json
+import os
+import sys
 import tempfile
-import shutil
+import time
+import traceback
 
 import numpy as np
 import pandas as pd
 import torch
+
+# Ensure project root is on path
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, PROJECT_ROOT)
 
 # ── Paths ──────────────────────────────────────────────────────────────
 SAMPLE_DIR = os.path.join(PROJECT_ROOT, "sample_data")
@@ -432,7 +430,7 @@ def test_train_mil_1epoch():
         )
         trainer.fit(model, datamodule=dm)
 
-    print(f"  Completed 1 epoch of AttriMIL training")
+    print("  Completed 1 epoch of AttriMIL training")
 
 
 def test_train_baseline_1epoch():
@@ -467,7 +465,7 @@ def test_train_baseline_1epoch():
         )
         trainer.fit(model, dm)
 
-    print(f"  Completed 1 epoch of baseline ResNet18 training")
+    print("  Completed 1 epoch of baseline ResNet18 training")
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -524,7 +522,7 @@ def test_cache_manager():
     retrieved = cache.get(key)
     assert retrieved is not None, "Cache miss for just-inserted item"
     assert np.allclose(retrieved, value), "Retrieved value doesn't match"
-    print(f"  Cache hit/miss working correctly")
+    print("  Cache hit/miss working correctly")
     cache_stats = cache.stats()
     print(f"  Cache stats: {cache_stats}")
 
@@ -551,7 +549,7 @@ def test_batch_accumulator():
         batch_tensor, batch_meta = acc.get_batch()
         print(f"  Got remaining {batch_tensor.shape[0]} patches")
 
-    print(f"  BatchAccumulator working correctly")
+    print("  BatchAccumulator working correctly")
 
 
 # ═══════════════════════════════════════════════════════════════════════

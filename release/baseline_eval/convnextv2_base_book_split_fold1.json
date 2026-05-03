@@ -1,0 +1,26 @@
+{
+  "model_name": "convnextv2_base",
+  "fold": 1,
+  "n_folds": 5,
+  "split_info": {
+    "fold": 1,
+    "train_samples": 45103,
+    "val_samples": 7918,
+    "test_samples": 13253,
+    "train_books": 347,
+    "val_books": 61,
+    "test_books": 102,
+    "train_val_overlap": 0,
+    "train_test_overlap": 0,
+    "val_test_overlap": 0
+  },
+  "test_results": {
+    "test_loss_epoch": 1.1483843326568604,
+    "test_accuracy": 0.7950652837753296,
+    "test_precision": 0.8204513788223267,
+    "test_recall": 0.8298853635787964,
+    "test_f1": 0.8220860362052917
+  },
+  "model_path": "models_book_split/convnextv2_base_fold1_20260203_1706.pth",
+  "checkpoint_dir": "checkpoints_book_split/convnextv2_base_fold1_20260203_1706"
+}

@@ -1,0 +1,30 @@
+{
+  "model_name": "swin_s3_base_224",
+  "fold": 0,
+  "n_folds": 5,
+  "split_info": {
+    "fold": 0,
+    "split_type": "page_level",
+    "train_samples": 45067,
+    "val_samples": 7952,
+    "test_samples": 13255,
+    "train_books": 510,
+    "val_books": 509,
+    "test_books": 509,
+    "total_unique_books": 510,
+    "train_val_book_overlap": 509,
+    "train_test_book_overlap": 509,
+    "val_test_book_overlap": 508,
+    "train_val_overlap_pct": 100.0,
+    "train_test_overlap_pct": 100.0
+  },
+  "test_results": {
+    "test_loss_epoch": 0.07319296151399612,
+    "test_accuracy": 0.9814786911010742,
+    "test_precision": 0.9799985289573669,
+    "test_recall": 0.9812653064727783,
+    "test_f1": 0.9806270599365234
+  },
+  "model_path": "models_page_split/swin_s3_base_224_fold0_20260220_0811.pth",
+  "checkpoint_dir": "checkpoints_page_split/swin_s3_base_224_fold0_20260220_0811"
+}

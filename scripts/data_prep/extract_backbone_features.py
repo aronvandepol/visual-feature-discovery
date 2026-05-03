@@ -71,6 +71,7 @@ def build_backbone():
 
 def canonicalize_dataframe(df):
     """Apply the same printshop canonicalization as ParquetPrintshopDataset"""
+    import unicodedata
     canon_flag = os.getenv("CANONICALIZE_PRINTSHOPS", "1")
     mapping_path = os.getenv("PRINTSHOP_MAP_JSON", "").strip()
     mapping = {}
@@ -85,6 +86,11 @@ def canonicalize_dataframe(df):
                 '\ub300\ub3d9\uc778\uc1c4\uc18c \u5927\u6771\u5370\u5237\u6240': '\ub300\ub3d9\uc778\uc1c4\uc18c',
             }
         if 'printshop' in df.columns:
+            # Normalize Unicode form first. Parquet may store Hangul as NFD, which would
+            # silently fail to match NFC mapping keys.
+            df['printshop'] = df['printshop'].apply(
+                lambda s: unicodedata.normalize('NFC', s) if isinstance(s, str) else s
+            )
             df['printshop'] = df['printshop'].replace(mapping)
     return df
 

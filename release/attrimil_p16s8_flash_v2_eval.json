@@ -1,0 +1,62 @@
+{
+  "fold_0": {
+    "val_loss_epoch": 0.48035311698913574,
+    "val_cls_loss_epoch": 0.477478563785553,
+    "val_spatial_loss_epoch": 0.0002993243979290128,
+    "val_ranking_loss_epoch": 0.28445202112197876,
+    "val_accuracy": 0.869483232498169,
+    "val_precision": 0.8647083044052124,
+    "val_recall": 0.8118370771408081,
+    "val_f1": 0.8325138688087463
+  },
+  "fold_1": {
+    "val_loss_epoch": 0.5177913308143616,
+    "val_cls_loss_epoch": 0.5153677463531494,
+    "val_spatial_loss_epoch": 0.00027222270728088915,
+    "val_ranking_loss_epoch": 0.23963548243045807,
+    "val_accuracy": 0.8258016109466553,
+    "val_precision": 0.8263199329376221,
+    "val_recall": 0.8090084195137024,
+    "val_f1": 0.8154057264328003
+  },
+  "fold_2": {
+    "val_loss_epoch": 0.5826373100280762,
+    "val_cls_loss_epoch": 0.5804200768470764,
+    "val_spatial_loss_epoch": 0.0002856739447452128,
+    "val_ranking_loss_epoch": 0.2188536822795868,
+    "val_accuracy": 0.8173998594284058,
+    "val_precision": 0.8205571174621582,
+    "val_recall": 0.8266994953155518,
+    "val_f1": 0.8188861012458801
+  },
+  "fold_3": {
+    "val_loss_epoch": 0.35755273699760437,
+    "val_cls_loss_epoch": 0.35549670457839966,
+    "val_spatial_loss_epoch": 0.00028673827182501554,
+    "val_ranking_loss_epoch": 0.20275254547595978,
+    "val_accuracy": 0.870673418045044,
+    "val_precision": 0.8645851612091064,
+    "val_recall": 0.8768319487571716,
+    "val_f1": 0.8699753284454346
+  },
+  "fold_4": {
+    "val_loss_epoch": 0.4782925546169281,
+    "val_cls_loss_epoch": 0.4757266044616699,
+    "val_spatial_loss_epoch": 0.0002798244822770357,
+    "val_ranking_loss_epoch": 0.253788024187088,
+    "val_accuracy": 0.842677116394043,
+    "val_precision": 0.8419364094734192,
+    "val_recall": 0.8277908563613892,
+    "val_f1": 0.8339060544967651
+  },
+  "summary": {
+    "mean_val_accuracy": 0.8452070474624633,
+    "std_val_accuracy": 0.021881866531347795,
+    "mean_val_f1": 0.8341374158859253,
+    "std_val_f1": 0.019341789978413133,
+    "mean_val_precision": 0.8436213850975036,
+    "std_val_precision": 0.01853794975716841,
+    "mean_val_recall": 0.8304335594177246,
+    "std_val_recall": 0.024407389948294785
+  }
+}

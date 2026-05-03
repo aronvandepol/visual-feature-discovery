@@ -2,12 +2,9 @@
 
 import pytorch_lightning as pl
 import torch
-import torch.nn as nn
-import torch.nn.functional as F
 from torchmetrics import Accuracy, Precision, Recall, F1Score
 from src.visualization.flash_attention_vis import visualize_flash_attention
 import matplotlib.pyplot as plt
-import matplotlib.font_manager as fm
 from pytorch_lightning.loggers import CometLogger
 import os
 import io
@@ -15,13 +12,12 @@ import numpy as np
 from PIL import Image
 import warnings
 import logging
+from .attrimil import AttriMIL
 
 # Suppress matplotlib warnings
 warnings.filterwarnings('ignore', category=UserWarning, module='matplotlib')
 warnings.filterwarnings('ignore', message='Glyph*missing from font*')
 logging.getLogger('matplotlib.font_manager').setLevel(logging.ERROR)
-
-from .attrimil import AttriMIL
 
 
 class LightningAttriMIL(pl.LightningModule):
@@ -462,7 +458,7 @@ class LightningAttriMIL(pl.LightningModule):
 
         # Skip logging during sanity check (initial validation before training)
         if hasattr(self.trainer, "sanity_checking") and self.trainer.sanity_checking:
-            print(f"Skipping attention visualization - sanity checking mode")
+            print("Skipping attention visualization - sanity checking mode")
             return
 
         # Log fixed attention visualizations using current epoch data

@@ -19,7 +19,7 @@ import matplotlib.font_manager as fm
 from pytorch_grad_cam import GradCAM
 from pytorch_grad_cam.utils.image import show_cam_on_image
 from pytorch_grad_cam.utils.model_targets import ClassifierOutputTarget
-from torch.utils.data import DataLoader, Dataset
+from torch.utils.data import Dataset
 from sklearn.model_selection import GroupKFold
 from PIL import Image
 from tqdm import tqdm
@@ -187,7 +187,7 @@ def generate_gradcam_visualizations(
     """Generate HIGH-RESOLUTION GradCAM visualizations from test set of book-split."""
 
     print(f"\n{'='*60}")
-    print(f"GradCAM Visualization - Book Split (HIGH RESOLUTION)")
+    print("GradCAM Visualization - Book Split (HIGH RESOLUTION)")
     print(f"Model: {model_name}")
     print(f"Fold: {fold}")
     print(f"Samples per class: {samples_per_class}")
@@ -240,7 +240,7 @@ def generate_gradcam_visualizations(
     indices = list(range(len(dataset)))
     np.random.shuffle(indices)
 
-    print(f"\nGenerating high-resolution visualizations...")
+    print("\nGenerating high-resolution visualizations...")
     for idx in tqdm(indices):
         # Get sample info
         sample = dataset.samples[idx]
@@ -349,7 +349,7 @@ def generate_gradcam_visualizations(
     print("GradCAM Visualization Complete")
     print(f"{'='*60}")
     print(f"Output directory: {output_subdir}")
-    print(f"\nSamples per class:")
+    print("\nSamples per class:")
     for class_idx, count in samples_collected.items():
         print(f"  {class_names[class_idx]}: {count}")
     print(f"\nAccuracy on sampled images: {correct_predictions}/{total_predictions} "

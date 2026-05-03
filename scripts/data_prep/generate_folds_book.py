@@ -55,30 +55,41 @@ def main(args):
         class_col = 'class'
     elif 'printshop' in df.columns:
         class_col = 'printshop'
+    elif 'printshop_canonical' in df.columns:
+        class_col = 'printshop_canonical'
     else:
         raise ValueError(f"No class column found. Columns: {df.columns.tolist()}")
 
     print(f"Using filename column: '{filename_col}'")
     print(f"Using class column: '{class_col}'")
 
-    # Extract book names from filenames
-    print("\nExtracting book names from filenames...")
-    df['book'] = df[filename_col].apply(extract_book_from_filename)
+    # Determine the book/group column
+    if 'book_id_canonical' in df.columns:
+        group_col = 'book_id_canonical'
+    elif 'book_id' in df.columns:
+        group_col = 'book_id'
+    elif 'book' in df.columns:
+        group_col = 'book'
+    else:
+        print("\nExtracting book names from filenames...")
+        group_col = 'book'
+        df[group_col] = df[filename_col].apply(extract_book_from_filename)
+    print(f"Using group column: '{group_col}'")
 
-    unique_books = df['book'].nunique()
+    unique_books = df[group_col].nunique()
     print(f"Found {unique_books} unique books")
 
     # Show book distribution per class
     print("\nBooks per class:")
     for cls in sorted(df[class_col].unique()):
-        cls_books = df[df[class_col] == cls]['book'].nunique()
+        cls_books = df[df[class_col] == cls][group_col].nunique()
         cls_pages = len(df[df[class_col] == cls])
         print(f"  {cls}: {cls_books} books, {cls_pages} pages")
 
     # Generate indices and groups for GroupKFold
     all_indices = np.arange(len(df))
     labels = df[class_col].values
-    groups = df['book'].values
+    groups = df[group_col].values
 
     # Perform GroupKFold cross-validation
     gkf = GroupKFold(n_splits=args.n_splits)
@@ -92,7 +103,8 @@ def main(args):
             'total_samples': len(df),
             'total_books': unique_books,
             'filename_column': filename_col,
-            'class_column': class_col
+                'class_column': class_col,
+                'group_column': group_col
         },
         'folds': []
     }
@@ -158,7 +170,7 @@ def main(args):
         train_stats = {
             'fold': f"{fold_idx}_train",
             'total': len(train_df),
-            'books': train_df['book'].nunique(),
+            'books': train_df[group_col].nunique(),
             'printshops': train_df[class_col].value_counts().to_dict()
         }
 
@@ -167,7 +179,7 @@ def main(args):
         val_stats = {
             'fold': f"{fold_idx}_val",
             'total': len(val_df),
-            'books': val_df['book'].nunique(),
+            'books': val_df[group_col].nunique(),
             'printshops': val_df[class_col].value_counts().to_dict()
         }
 

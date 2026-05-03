@@ -4,7 +4,7 @@ import os
 import argparse
 import pandas as pd
 import numpy as np
-from sklearn.model_selection import KFold, train_test_split
+from sklearn.model_selection import KFold
 import json
 
 def main(args):
@@ -13,6 +13,17 @@ def main(args):
     # Load the parquet file
     df = pd.read_parquet(args.parquet_file)
     print(f"Loaded dataset with {len(df)} samples")
+
+    # Determine the class column for fold statistics
+    if 'class' in df.columns:
+        class_col = 'class'
+    elif 'printshop' in df.columns:
+        class_col = 'printshop'
+    elif 'printshop_canonical' in df.columns:
+        class_col = 'printshop_canonical'
+    else:
+        raise ValueError(f"No class column found. Columns: {df.columns.tolist()}")
+    print(f"Using class column: '{class_col}'")
 
     # Generate indices for all samples
     all_indices = np.arange(len(df))
@@ -29,9 +40,11 @@ def main(args):
     fold_assignments = {
         'metadata': {
             'dataset': os.path.basename(args.parquet_file),
+            'split_type': 'page_level_kfold',
             'n_splits': args.n_splits,
             'random_state': args.random_state,
-            'total_samples': len(df)
+            'total_samples': len(df),
+            'class_column': class_col
         },
         'folds': []
     }
@@ -64,13 +77,13 @@ def main(args):
         train_stats = {
             'fold': f"{fold_idx}_train",
             'total': len(train_df),
-            'printshops': train_df['printshop'].value_counts().to_dict()
+            'printshops': train_df[class_col].value_counts().to_dict()
         }
 
         val_stats = {
             'fold': f"{fold_idx}_val",
             'total': len(val_df),
-            'printshops': val_df['printshop'].value_counts().to_dict()
+            'printshops': val_df[class_col].value_counts().to_dict()
         }
 
         fold_stats.append(train_stats)

@@ -1,4 +1,3 @@
-import sys, os; sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 """
 Unified inference script for document classification models.
 
@@ -15,15 +14,20 @@ Uses the same preprocessing as training (grayscale + CLAHE + single-channel norm
 """
 
 import argparse
-import json
 import glob as glob_module
+import json
+import os
+import sys
 
+import albumentations as A
 import numpy as np
 import pandas as pd
 import torch
-import albumentations as A
 from albumentations.pytorch import ToTensorV2
 from PIL import Image
+
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
+sys.path.insert(0, PROJECT_ROOT)
 
 
 # ── Model loading ─────────────────────────────────────────────────────

@@ -1,4 +1,3 @@
-import sys, os; sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 #!/usr/bin/env python3
 """
 Train CNN/Swin models with book-level splits for true generalization evaluation.
@@ -8,26 +7,32 @@ Each fold can be run as a separate SLURM array job.
 """
 
 import argparse
+import json
 import os
 import re
-import json
+import sys
+from datetime import datetime
+from pathlib import Path
+
+import albumentations as A
 import numpy as np
-import torch
 import pytorch_lightning as pl
+import torch
+from albumentations.pytorch import ToTensorV2
+from PIL import Image
 from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping
+from sklearn.model_selection import GroupKFold
+from torch.utils.data import Dataset, DataLoader
+
 try:
     from pytorch_lightning.loggers import CometLogger
 except ImportError:
     CometLogger = None
-from datetime import datetime
-from pathlib import Path
-from PIL import Image
-from torch.utils.data import Dataset, DataLoader, Subset
-from sklearn.model_selection import GroupKFold
-import albumentations as A
-from albumentations.pytorch import ToTensorV2
 
-from src.models.lightning_timm import LightningTIMM
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
+sys.path.insert(0, PROJECT_ROOT)
+
+from src.models.lightning_timm import LightningTIMM  # noqa: E402
 
 
 def extract_book(filename: str) -> str:
@@ -365,7 +370,7 @@ def main(args):
 
     print(f"\n{'='*60}")
     print(f"Training {args.model_name} - Fold {args.fold + 1}/{args.n_folds}")
-    print(f"Book-level split (no data leakage)")
+    print("Book-level split (no data leakage)")
     print(f"{'='*60}\n")
 
     # Set up data module with book-level splits

@@ -1,20 +1,24 @@
-import sys, os; sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 # ensemble_evaluation.py
 
-import os
 import argparse
+import os
+import sys
+
 import torch
-import numpy as np
 import pandas as pd
 from tqdm import tqdm
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support, confusion_matrix
 import matplotlib
+
 matplotlib.use('Agg')
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt  # noqa: E402
 import seaborn as sns
 
-from src.data.parquet_datamodule import ParquetPrintshopDataModule
-from src.models.lightning_attrimil import LightningAttriMIL
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
+sys.path.insert(0, PROJECT_ROOT)
+
+from src.data.parquet_datamodule import ParquetPrintshopDataModule  # noqa: E402
+from src.models.lightning_attrimil import LightningAttriMIL  # noqa: E402
 
 def load_model(model_path, num_classes, class_names, patch_size, stride):
     model = LightningAttriMIL(
@@ -159,7 +163,7 @@ def main(args):
     precision, recall, f1, _ = precision_recall_fscore_support(all_true_labels, all_ensemble_preds, average='macro')
     cm = confusion_matrix(all_true_labels, all_ensemble_preds)
 
-    print(f"\nEnsemble Evaluation Results:")
+    print("\nEnsemble Evaluation Results:")
     print(f"Accuracy: {accuracy:.4f}")
     print(f"Precision: {precision:.4f}")
     print(f"Recall: {recall:.4f}")

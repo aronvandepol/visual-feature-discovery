@@ -6,7 +6,7 @@ Configuration parameters for the comprehensive feature extraction pipeline.
 import os
 from functools import lru_cache
 from pathlib import Path
-from typing import Iterable, List, Optional, Tuple
+from typing import List, Optional, Tuple
 
 
 # Canonical printshop name mapping (merge Daedong variants into one label)

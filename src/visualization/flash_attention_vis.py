@@ -192,7 +192,7 @@ def visualize_flash_attention(patches, attention_weights, y_prob, y_true, class_
     info_text += f"Correct: {'✓' if predicted_class == true_class else '✗'}\n\n"
     
     # Add attention info
-    info_text += f"Attention Info:\n"
+    info_text += "Attention Info:\n"
     info_text += f"Max attention: {attention_weights.max().item():.4f}\n"
     info_text += f"Min attention: {attention_weights.min().item():.4f}\n"
     info_text += f"Mean attention: {attention_weights.mean().item():.4f}\n"
