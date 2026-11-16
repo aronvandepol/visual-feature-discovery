@@ -49,4 +49,6 @@ preferred-citation:
     name: "Cambridge University Press"
   issn: "2977-8158"
   year: 2026
-  notes: "Volume, issue, page range, and article DOI to be updated upon publication."
+  volume: 2
+  number: "e22"
+  doi: "10.1017/chr.2026.10036"

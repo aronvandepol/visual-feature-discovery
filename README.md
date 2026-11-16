@@ -1,13 +1,11 @@
 # Visual Feature Discovery
 
-> **Pre-publication notice.**
-> This repository accompanies the article *Interpretable Visual Feature Discovery using Multiple Instance Learning: A Case Study of Colonial Korean Print* by van de Pol, Prokic, and Mol, **forthcoming in *Computational Humanities Research*** (Cambridge University Press, ISSN 2977-8158).
->
-> The full reproducibility bundle (trained model weights, interpretability artifacts, and dataset metadata) will be deposited on Zenodo upon publication.
-> The Zenodo concept DOI of that deposit will be the canonical citable identifier in the paper.
-> Zenodo concept DOI: [`10.5281/zenodo.20015055`](https://doi.org/10.5281/zenodo.20015055)
+Code for the article:
 
-Code for "Interpretable Visual Feature Discovery using Multiple Instance Learning: A Case Study of Colonial Korean Print" (van de Pol, Prokic, and Mol, forthcoming in *Computational Humanities Research*, Cambridge University Press).
+van de Pol, A., Prokic, J., & Mol, A. (2026). Interpretable visual feature discovery using multiple instance learning: A case study of colonial Korean print. *Computational Humanities Research*, 2, e22. https://doi.org/10.1017/chr.2026.10036
+
+The trained model weights, dataset metadata, fold definitions, evaluation results and interpretability artifacts are on Zenodo under the concept DOI [`10.5281/zenodo.20015055`](https://doi.org/10.5281/zenodo.20015055).
+A mirror of the weights is on Hugging Face at [aronvandepol/visual-feature-discovery](https://huggingface.co/aronvandepol/visual-feature-discovery).
 
 ## Overview
 
@@ -406,18 +404,19 @@ The 8x8 patch embeddings and cluster assignments used for the paper's UMAP and H
 The source code in this repository is released under the **MIT License**.
 See [LICENSE](LICENSE) for details.
 
-The Zenodo deposit (forthcoming) will use dual licensing: the source code archive remains under MIT, and all other artifacts (dataset metadata, fold definitions, trained model weights, evaluation results, interpretability artifacts) are released under **CC-BY-4.0**.
+The Zenodo deposit uses dual licensing: the source code archive remains under MIT, and all other artifacts (dataset metadata, fold definitions, trained model weights, evaluation results, interpretability artifacts) are released under **CC-BY-4.0**.
 
-The page images themselves are not redistributed in this repository or on Zenodo and remain governed by the terms of the Hyundam Mun'go collection.
+The page-image corpus is not redistributed in this repository or on Zenodo and remains governed by the terms of the Hyundam Mun'go collection.
+The only images included are the ten sample pages in `sample_data/`.
 
 ## Citation
 
-If you use this software, please cite both the article (when available) and the software/Zenodo record:
+If you use this software, please cite both the article and the Zenodo record:
 
 ```
-Van de Pol, A., Prokic, J., & Mol, A. (forthcoming).
-Interpretable Visual Feature Discovery using Multiple Instance Learning: A Case Study of Colonial Korean Print.
-Computational Humanities Research, X(X). Cambridge University Press.
+van de Pol, A., Prokic, J., & Mol, A. (2026).
+Interpretable visual feature discovery using multiple instance learning: A case study of colonial Korean print.
+Computational Humanities Research, 2, e22. https://doi.org/10.1017/chr.2026.10036
 ```
 
 The Zenodo concept DOI [`10.5281/zenodo.20015055`](https://doi.org/10.5281/zenodo.20015055) is the citable identifier for the software and accompanying data artifacts.
