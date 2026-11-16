@@ -6,7 +6,7 @@ It contains the source code, trained model weights, dataset metadata, fold defin
 
 ## Source code
 
-The training, evaluation, and interpretability code is bundled as `code-v1.0.0.tar.gz` and contains the source tree of `aronvandepol/visual-feature-discovery` at version 1.0.0 (commit `dedcfe3`).
+The training, evaluation, and interpretability code is bundled as `code-v1.0.0.tar.gz` and contains the source tree of `aronvandepol/visual-feature-discovery` at version 1.0.0 (commit `66f7a2c`).
 The active development repository is at:
 
 `https://github.com/aronvandepol/visual-feature-discovery`

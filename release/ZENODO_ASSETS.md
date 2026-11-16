@@ -37,10 +37,10 @@ Ten sample pages for testing the pipeline are the only images included (`sample_
 
 | File | Size | SHA-256 |
 |---|---:|---|
-| `code-v1.0.0.tar.gz` | 13 MB | `b4ad3c43307df0d187798589527e992459f77af5cca6f5b522aff990a220ce8b` |
+| `code-v1.0.0.tar.gz` | 13 MB | `16eea4bfb91afe9281d2571866f2329606060edf53a784a31c8cbda872bcb3ac` |
 
-The archive contains the source tree of `aronvandepol/visual-feature-discovery` at version 1.0.0 (commit `dedcfe3`).
-Built with `tar` from the working tree at that commit, with virtualenvs, caches, results, and gitignored heavy artifacts excluded.
+The archive contains the source tree of `aronvandepol/visual-feature-discovery` at version 1.0.0 (commit `66f7a2c`), without the `release/` folder.
+Built with `git archive` from that commit, so it holds tracked files only.
 Prefix dir inside the tarball is `visual-feature-discovery-v1.0.0/`.
 
 ## Trained Model Weights
