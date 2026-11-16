@@ -10,7 +10,7 @@ Files to include in the Zenodo deposit, with their staging location:
 
 | Layer | Files | Source |
 |---|---|---|
-| Landing page | `README.md` | `release/zenodo/README.md` |
+| Landing page | `README.md` | `release/FULL_README.md` |
 | Source code | `code-v1.0.0.tar.gz` | `release/zenodo/code-v1.0.0.tar.gz` |
 | AttriMIL Flash weights | `attrimil_p{16s8,8s4}_flash_fold{0-4}.pth` (10 files) | `release/zenodo/` |
 | Baseline weights | `{convnextv2_base,swin_s3_base_224}_{book,page}_split_fold{0-4}.pth` (20 files) | `release/zenodo/` |
@@ -18,7 +18,7 @@ Files to include in the Zenodo deposit, with their staging location:
 | Dataset metadata | `dataset_metadata.parquet`, `dataset_metadata.csv.gz` | `release/` |
 | Fold definitions | `folds_{book,page}_5fold.json`, `folds_{book,page}_5fold_stats.json` | `release/` |
 | Eval results | `attrimil_p{16s8,8s4}_flash_v2_eval.json` | `release/` |
-| Baseline eval results | 20 JSON files | `release/baseline_eval/` |
+| Baseline eval results | 20 JSON files, uploaded flat with the basename of their weight file | `release/baseline_eval/` |
 | Documentation | `DATASET_CARD.md`, `ZENODO_ASSETS.md` (this file) | `release/` |
 
 Total: ~64 files, ~9.1 GB.
@@ -31,15 +31,16 @@ The source code archive (`code-v1.0.0.tar.gz`) carries an internal **MIT License
 The dual-licensing reflects the standard distinction between software (MIT) and data/derived artifacts (CC-BY-4.0).
 
 The page images referenced by `dataset_metadata.parquet` are not part of this record and remain under the Hyundam Mun'go catalog terms.
+Ten sample pages for testing the pipeline are the only images included (`sample_data/` in the code archive).
 
 ## Source code archive
 
 | File | Size | SHA-256 |
 |---|---:|---|
-| `code-v1.0.0.tar.gz` | 13 MB | `b4ad3c43307df0d187798589527e992459f77af5cca6f5b522aff990a220ce8b` |
+| `code-v1.0.0.tar.gz` | 13 MB | `16eea4bfb91afe9281d2571866f2329606060edf53a784a31c8cbda872bcb3ac` |
 
-The archive contains the source tree of `aronvandepol/visual-feature-discovery` at the v1.0.0 release.
-Built with `tar` from the working tree at the tagged commit, with virtualenvs, caches, results, and gitignored heavy artifacts excluded.
+The archive contains the source tree of `aronvandepol/visual-feature-discovery` at version 1.0.0 (commit `66f7a2c`), without the `release/` folder.
+Built with `git archive` from that commit, so it holds tracked files only.
 Prefix dir inside the tarball is `visual-feature-discovery-v1.0.0/`.
 
 ## Trained Model Weights
@@ -91,8 +92,8 @@ Total: 10 weight files, ~120 MB.
 
 5-fold ConvNeXtV2 Base and Swin S3 Base 224 baseline checkpoints (best per fold by validation loss) under both evaluation protocols.
 Optimizer state has been stripped; each file contains the model state_dict, hyperparameters, epoch index, and `pytorch-lightning_version`.
-Loading them requires the matching Lightning module from the training scripts (`train_book_split.py` and `train_page_split.py`).
-Per-fold eval JSONs are bundled separately under `release/baseline_eval/`.
+Loading them requires `LightningTIMM` from `src.models.lightning_timm`, the module used by the training scripts (`scripts/training/train_baseline_book.py` and `scripts/training/train_baseline_page.py`).
+Per-fold eval JSONs are in the deposit as one JSON per weight file with the same basename (`release/baseline_eval/` in the repository).
 
 ### ConvNeXtV2 Base (full page, 896x896)
 
@@ -148,6 +149,8 @@ Per-fold eval JSONs are bundled separately under `release/baseline_eval/`.
 
 Total baselines: 20 weight files, ~6.3 GB combined.
 Verified means agree with the paper's `table:comparative_performance`: ConvNeXt 82.0% / 98.1%, Swin 84.1% / 98.2%.
+The standard deviations above are sample standard deviations over the five per-fold eval files.
+The article's table prints different values for the baselines (82.0 +/- 2.1, 84.1 +/- 1.1, 98.1 +/- 0.2, 98.2 +/- 0.4).
 
 ## Interpretability Artifacts
 
@@ -163,8 +166,8 @@ The compact artifact is derived from the full artifact and omits the `embedding`
 Neither interpretability artifact contains page-image data.
 
 The 10 AttriMIL weight files use the AttriMIL Flash architecture (multi-head Q/K/V attention with output projection).
-Loading them requires `LightningAttriMILFlash` from `src.models.lightning_attrimil_flash`, with `patch_size` and `stride` matching the filename (16/8 or 8/4) and `num_classes=4`.
+Loading them requires `LightningAttriMIL` from `src.models.lightning_attrimil`, with `patch_size` and `stride` matching the filename (16/8 or 8/4) and `num_classes=4`.
 
-The 20 baseline weight files come from the training scripts in the project root (`train_book_split.py` for held-out-book GroupKFold and `train_page_split.py` for page-random KFold).
+The 20 baseline weight files come from the baseline training scripts (`scripts/training/train_baseline_book.py` for held-out-book GroupKFold and `scripts/training/train_baseline_page.py` for page-random KFold).
 ConvNeXtV2 Base operates on full pages at 896x896; Swin S3 Base 224 operates on text-only page cutouts.
 All baselines use `num_classes=4` over the canonicalized printshop set (Adan Mungo merge for Taedong applied).
